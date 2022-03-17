@@ -27,6 +27,7 @@ This is an app that allows users to share their do it yourself project that use 
 * Stretch: Users can get directions to puchase specific materials or tools listed in the project 
 * Stretch: Users can group together to work on project
 * Stretch: Notifications when user's project or comment is liked
+* Stretch: Users can make posts private or public
 
 ## User Scenario
 * Given that I am logged in, when I view the home page, then I should see projects that other users have made.
