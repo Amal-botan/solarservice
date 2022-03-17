@@ -14,11 +14,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GoogleButton from 'react-google-button'
-import {useState} from "react";
+import { useState } from "react";
 import { useUserAuth } from "../context/UserAuthContext";
 import { useNavigate } from "react-router-dom";
 import Alert from '@mui/material/Alert';
-import GoogleButton from 'react-google-button'
 
 
 function Copyright(props) {
@@ -37,7 +36,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignInSide() {
-  const  { login } = useUserAuth();
+  const { login, googleSignIn } = useUserAuth();
   const [error, setError] = useState("")
   const navigate = useNavigate();
 
@@ -53,12 +52,23 @@ export default function SignInSide() {
     const password = data.get('password')
     try {
       await login(email, password);
-      navigate("/")
-    } catch(err) {
+      navigate("/home")
+    } catch (err) {
       setError(err.message);
     }
 
   };
+
+  const handleGoogleSignIn = async (event) => {
+    event.preventDefault();
+    try {
+      await googleSignIn();
+      navigate("/home");
+    }catch (err) {
+      setError(err.message)
+    }
+  }
+
 
 
 
@@ -96,7 +106,7 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            {error && <Alert severity="error">{ error }</Alert>}
+            {error && <Alert severity="error">{error}</Alert>}
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
@@ -128,8 +138,12 @@ export default function SignInSide() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Login
+
               </Button>
+              <div>
+                <GoogleButton className="g-btn" type="light" onClick={handleGoogleSignIn}/>
+              </div>
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

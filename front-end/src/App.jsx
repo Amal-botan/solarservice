@@ -5,6 +5,9 @@ import Register from "./pages/Register";
 import { Router, Routes, Route } from "react-router-dom";
 import { Fragment } from 'react';
 import { UserAuthContextProvider } from "./context/UserAuthContext";
+import Home from "./pages/Home";
+import ProtectedRoute from "./pages/ProtectedRoute";
+
 function App() {
   return (
 
@@ -13,6 +16,7 @@ function App() {
       {/* <Navbars /> */}
       <UserAuthContextProvider>
         <Routes>
+          <Route path="/home" element={<ProtectedRoute>{<Home />}</ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
