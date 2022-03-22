@@ -11,10 +11,11 @@ import {
 import {auth} from "../firebase";
 
 
-const userAuthContext = createContext();
+const userAuthContext = createContext(null);
 
 export function UserAuthContextProvider({children}) {
  const [user, setUser] = useState("") 
+ const [loading, setLoading] = useState(true);
   const signUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   }
@@ -26,6 +27,7 @@ export function UserAuthContextProvider({children}) {
   }
 
   const logOut = () => {
+    setLoading(true);  
     return signOut(auth);
   }
 
@@ -38,17 +40,21 @@ export function UserAuthContextProvider({children}) {
   //   const sendPasswordReset = 
   // }
 
+//only want to run when mounting component
   useEffect(() => {
    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+    setUser(currentUser);
+    setLoading(false);  
     });
 
     return () => {
       unsubscribe();
+      setLoading(true);  
     }
   },[])
+
   return (
-    <userAuthContext.Provider value ={{user, signUp, login, logOut, googleSignIn}} > {children} </userAuthContext.Provider>
+    <userAuthContext.Provider value ={{user, signUp, login, logOut, googleSignIn}} > {!loading && children} </userAuthContext.Provider>
   )
 }
 
