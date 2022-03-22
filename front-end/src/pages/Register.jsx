@@ -36,7 +36,7 @@ export default function SignUp() {
   const  { signUp } = useUserAuth();
   const [error, setError] = useState("")
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false)
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
@@ -49,10 +49,12 @@ export default function SignUp() {
     const password = data.get('password')
     try {
       await signUp(email, password);
-      navigate("/")
+      navigate("/home")
+      // setLoading(true); to make a loading and remove button, do that later
     } catch(err) {
       setError(err.message);
     }
+    // setLoading(false);
   };
 
   

@@ -3,13 +3,18 @@ import { Navigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const { user, logOut } = useUserAuth();
+  const navigate = useNavigate();
+
   console.log("user", user)
   const handleSubmit = async () => {
     try {
-      await logOut
+      await logOut()
+      navigate("/login")
+
     } catch (err) {
       console.log(err.message)
     }
