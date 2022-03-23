@@ -6,7 +6,7 @@ import Home from "./Home"
 
 const ProtectedRoute = () => {
   // const user = useContext(useUserAuth);
-   let {user} = useUserAuth();
+   const {user} = useUserAuth();
   if(!user) {
    return <Navigate to="/login" />
   }
