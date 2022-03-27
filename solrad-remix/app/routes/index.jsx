@@ -9,43 +9,43 @@ import {
 
 export default function Index() {
   const transition = useTransition();
-  const {
-    homeIcon: "../../public/images/icons/home-svgrepo-com.svg",
-    homeIconAltText: "home icon",
-    projectIcon: "../../public/images/icons/plan-svgrepo-com.svg",
-    projectIconAltText: "project icon",
-    chatIcon: "../../public/images/icons/comment-svgrepo-com.svg",
-    chatIconAltText: "chat icon",
-    siteLogo: "../../public/images/Social Icon Logo Only Zoom In.jpg",
-    altTextLogo: "SolRad logo",
-    loadingIcon: "../../public/images/icons/loading-svgrepo-com.svg",
-    loadingIconAltText: "loading icon",
-    heroTitle: "SolRad",
-    heroImage: "../../public/images/Social Icon Logo Only Zoom In.jpg",
-    heroImageAltText: "solar rad hero image",
-    heroText: "more than so rad, its solrad",
-    userName: "Meagan Sandler",
-    userHandle: "@Meagan224",
-    avatarAltText: "@Meagan224's avatar",
-    postTime: "21:39",
-    userAvatar: "../../public/images/icons/avatar-svgrepo-com.svg",
-    userStatus: "../../public/images/icons/status-waiting-svgrepo-com.svg",
-    userStatusAltText: "Meagan224 is Offline",
-    projectText: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...",
-    projectImage: "../../public/images/Solar tile 5B.157.png",
-    projectImageAltText: "solar tile",
-    expandImage: "../../public/images/icons/expand-svgrepo-com.svg",
-    expandImageAltText: "expand for details",
-    commentProjectImage: "../../public/images/icons/comment-svgrepo-com.svg",
-    commentProjectImageAltText: "comment on this project",
-    shareProjectImage: "../../public/images/icons/share-svgrepo-com.svg",
-    shareProjectImageAltText: "share this project",
-    likeProjectImage: "../../public/images/icons/like-svgrepo-com.svg",
-    likeProjectImageAltText: "like this project",
-    favouriteProjectImage: "../../public/images/icons/favourite-star-svgrepo-com.svg",
-    favouriteProjectImageAltText: "favourite this project",
-    footerText: "Created By Keith Greensberg, Amall Sighn, Jacob Alibaster 2022",
-  };
+ 
+    homeIcon= "../../public/images/icons/home-svgrepo-com.svg";
+    homeIconAltText= "home icon";
+    projectIcon= "../../public/images/icons/plan-svgrepo-com.svg";
+    projectIconAltText= "project icon";
+    chatIcon= "../../public/images/icons/comment-svgrepo-com.svg";
+    chatIconAltText= "chat icon";
+    siteLogo= "../../public/images/Social Icon Logo Only Zoom In.jpg";
+    altTextLogo= "SolRad logo";
+    loadingIcon= "../../public/images/icons/loading-svgrepo-com.svg";
+    loadingIconAltText= "loading icon";
+    heroTitle= "SolRad";
+    heroImage= "../../public/images/Social Icon Logo Only Zoom In.jpg";
+    heroImageAltText= "solar rad hero image";
+    heroText= "more than so rad; its solrad";
+    userName= "Meagan Sandler";
+    userHandle= "@Meagan224";
+    avatarAltText= "@Meagan224's avatar";
+    postTime= "21=39";
+    userAvatar= "../../public/images/icons/avatar-svgrepo-com.svg";
+    userStatus= "../../public/images/icons/status-waiting-svgrepo-com.svg";
+    userStatusAltText= "Meagan224 is Offline";
+    projectText= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s; when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...";
+    projectImage= "../../public/images/Solar tile 5B.157.png";
+    projectImageAltText= "solar tile";
+    expandImage= "../../public/images/icons/expand-svgrepo-com.svg";
+    expandImageAltText= "expand for details";
+    commentProjectImage= "../../public/images/icons/comment-svgrepo-com.svg";
+    commentProjectImageAltText= "comment on this project";
+    shareProjectImage= "../../public/images/icons/share-svgrepo-com.svg";
+    shareProjectImageAltText= "share this project";
+    likeProjectImage= "../../public/images/icons/like-svgrepo-com.svg";
+    likeProjectImageAltText= "like this project";
+    favouriteProjectImage= "../../public/images/icons/favourite-star-svgrepo-com.svg";
+    favouriteProjectImageAltText= "favourite this project";
+    footerText= "Created By Keith Greensberg, Amall Sighn, Jacob Alibaster 2022";
+
   return (
     <>
       <header className="header">
