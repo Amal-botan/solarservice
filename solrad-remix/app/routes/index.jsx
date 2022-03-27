@@ -70,13 +70,13 @@ export default function Index() {
             {/* expand for full project details */}
           <img className='project-footer project-image' id='expand' src={expandImage} alt={expandImageAltText} />
           {/* comment on the project (may open a modal then redirects to project page after posting) */}
-          <img src={commentProjectImage} id='comment' alt={commitProjectImageAltText} />
+          <img className='project-footer project-image' src={commentProjectImage} id='comment' alt={commitProjectImageAltText} />
           {/* share the project, opens a modal with a link to the project page or just is a clipboard*/}
-          <img src={shareProjectImage} id='share' alt={shareProjectImageAltText} />
+          <img className='project-footer project-image' src={shareProjectImage} id='share' alt={shareProjectImageAltText} />
           {/* like, interactive */}
-          <img src={likeProjectImage} id='like' alt={likeProjectImageAltText} />
+          <img className='project-footer project-image' src={likeProjectImage} id='like' alt={likeProjectImageAltText} />
           {/* favourite */}
-          <img src={favouriteProjectImage} id='favourite' alt={favouriteProjectImageAltText} />
+          <img className='project-footer project-image' src={favouriteProjectImage} id='favourite' alt={favouriteProjectImageAltText} />
          </footer>
         </article>
       </main>
