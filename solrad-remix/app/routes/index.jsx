@@ -48,6 +48,12 @@ export default function Index() {
   const favouriteProjectImageAltText = "favourite this project";
   const footerText =
     "Created By Keith Greensberg, Amall Sighn, Jacob Alibaster 2022";
+  const purchaseProjectImage = "images/icons/buy-svgrepo-com.svg";
+  const purchaseProjectImageAltText = "buy this project";
+  const logoutIcon = "images/icons/logout-svgrepo-com.";
+  const logoutIconAltText = "logout";
+  const loginIcon = "images/icons/login-svgrepo-com.svg";
+  const loginIconAltText = "login";
 
   return (
     <>
@@ -87,10 +93,10 @@ export default function Index() {
           </span>
           <Form method="post">
             <label className="header-nav nav-label">
-              Search:{" "}
+              Search: <img src={searchIcon} alt={searchIconAltText} />
               <input
                 className="header-nav nav-input"
-                type="submit"
+                type="text"
                 name="search"
               />
             </label>
@@ -104,6 +110,21 @@ export default function Index() {
               </span>
             ) : null}
           </Form>
+          {userLoggedIn ? (
+            <div>
+              <p className="">
+                <Link to="logout">logout</Link>
+              </p>
+              <img src={logoutIcon} alt={logoutIconAltText} />
+            </div>
+          ) : (
+            <div>
+              <p className="">
+                <Link to="logout">logout</Link>
+              </p>
+              <img src={loginIcon} alt={loginIconAltText} />
+            </div>
+          )}
         </nav>
         <container className="hero-container">
           <h1 className="hero-container hero-container-title">{heroTitle}</h1>
@@ -172,6 +193,13 @@ export default function Index() {
               src={favouriteProjectImage}
               id="favourite"
               alt={favouriteProjectImageAltText}
+            />
+            {/* purchase */}
+            <img
+              className="project-footer project-image"
+              src={purchaseProjectImage}
+              id="purchase"
+              alt={purchaseProjectImageAltText}
             />
           </footer>
         </article>
