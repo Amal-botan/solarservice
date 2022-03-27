@@ -9,17 +9,55 @@ import {
 
 export default function Index() {
   const transition = useTransition();
+  const {
+    homeIcon: "",
+    homeIconAltText: "",
+    projectIcon: "",
+    projectIconAltText: "",
+    chatIcon: "",
+    chatIconAltText: "",
+    siteLogo: "",
+    altTextLogo: "",
+    loadingIcon: "",
+    loadingIconAltText: "",
+    heroTitle: "",
+    heroImage: "",
+    heroImageAltText: "",
+    heroText: "",
+    userName: "",
+    userHandle: "",
+    avatarAltText: "",
+    postTime: "",
+    userAvatar: "",
+    userStatus: "",
+    userStatusAltText: "",
+    projectText: "",
+    projectImageAltText: "",
+    expandImage: "",
+    expandImageAltText: "",
+    commentProjectImage: "",
+    commentProjectImageAltText: "",
+    shareProjectImage: "",
+    shareProjectImageAltText: "",
+    likeProjectImage: "",
+    likeProjectImageAltText: "",
+    favouriteProjectImage: "",
+    favouriteProjectImageAltText: "",
+  };
   return (
     <>
       <header className="header">
         <nav className="header header-nav">
           <img
-            src="../../public/images/Social Icon Logo Only Zoom In.jpg"
-            alt="logo of square solar"
+           src={siteLogo}
+           alt={altTextLogo}
           />
-          <p className="header-nav nav-title">Home</p>
-          <p className="header-nav nav-title">Projects</p>
-          <p className="header-nav nav-title">Chat</p>
+          <span className="header-nav span-nav"> <p className="span-nav nav-title"><Link>Home</Link></p>
+          <img className="span-nav nav-img" src={homeIcon} alt={homeIconAltText} /></span> <span className="header-nav span-nav"><p className="span-nav nav-title"><Link>Projects</Link></p>
+          <img className="span-nav nav-img" src={projectIcon} alt={projectIconAltText} />
+          </span>
+          <span className="header-nav span-nav"><p className="span-nav nav-title"><Link>Chat</Link></p>
+          <img className="span-nav nav-img" src={chatIcon} alt={chatIconAltText} /></span>
           <Form method="post">
             <label className="header-nav nav-label">
               Search:{" "}
@@ -30,8 +68,8 @@ export default function Index() {
               />
             </label>
             {transition.submission ? (
-              <span className="header-nav nav-loader">
-                <svg></svg>
+              <span className="header-nav span-loader">
+                <img className="span-nav nav-img" src={loadingIcon} alt={loadingIconAltText} />
               </span>
             ) : null}
           </Form>
@@ -40,7 +78,8 @@ export default function Index() {
           <h1 className="hero-container hero-container-title">{heroTitle}</h1>
           <img
             className="hero-container hero-container-image"
-            src="../../public/images/Social Icon Logo Only Zoom In.jpg"
+            src={heroImage}
+            alt={heroImageAltText}
           />
           <aside className="hero-container hero-container-aside">
             <p className="hero-container-aside hero-aside-text">{heroText}</p>
@@ -83,12 +122,15 @@ export default function Index() {
       <footer className="footer">
         <nav className="footer footer-nav">
           <img
-            src="../../public/images/Social Icon Logo Only Zoom In.jpg"
-            alt="logo of square solar"
+            src={siteLogo}
+            alt={altTextLogo}
           />
-          <p className="footer-nav nav-title">Home</p>
-          <p className="footer-nav nav-title">Projects</p>
-          <p className="footer-nav nav-title">Chat</p>
+           <p className="footer-nav nav-title"><Link>Home</Link></p>
+           <img className="footer-nav nav-img" src={homeIcon} alt={homeIconAltText} />
+          <p className="footer-nav nav-title"><Link>Projects</Link></p>
+          <img className="footer-nav nav-img" src={projectIcon} alt={projectIconAltText} />
+          <p className="footer-nav nav-title"><Link>Chat</Link></p>
+          <img className="footer-nav nav-img"/><Link src={chatIcon} alt={chatIconAltText} />
         </nav>
         <p className="footer footer-text">{footerText}</p>
       </footer>
