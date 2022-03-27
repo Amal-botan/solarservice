@@ -1,32 +1,21 @@
+import { json, useLoaderData, Form, redirect, useActionData, useTransition } from "remix";
+
 export default function Index() {
+  const transition = useTransition();
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <nav className="nav">
+      <img src="../../public/images/Social Icon Logo Only Zoom In.jpg" alt="logo of square solar" />
+      <p className="nav nav-header">Home</p>
+      <p className="nav nav-header">Projects</p>
+      <p className="nav nav-header">Chat</p>
+      <Form method="post">
+         <label className="nav nav-label">Search:{" "}
+      <input className="nav nav-input" type="submit" name="search" />
+      </label>{
+          transition.submission ? 
+          <span className="nav nav-loader"><svg></svg></span> :  null }
+      </Form>
+    </nav>
+    
   );
 }
