@@ -58,12 +58,26 @@ export default function Index() {
             <img src={userStatus} alt={userStatusAltText} />
             {/* onClick of user profile should render discord like description of user */}
           </header>
-          <h1 className="main-project project-title">{projectTitle}</h1>
+          <container className="main-project project-container">
+             <h1 className="project-container project-title">{projectTitle}</h1>
           <img
-            className="main-project project-image"
+            className="project-container project-image"
             src={projectImage} alt={projectImageAltText}
           />
           <p>{projectText}</p>
+          </container>
+         <footer className="main-project project-footer">
+            {/* expand for full project details */}
+          <img className='project-footer project-image' id='expand' src={expandImage} alt={expandImageAltText} />
+          {/* comment on the project (may open a modal then redirects to project page after posting) */}
+          <img src={commentProjectImage} id='comment' alt={commitProjectImageAltText} />
+          {/* share the project, opens a modal with a link to the project page or just is a clipboard*/}
+          <img src={shareProjectImage} id='share' alt={shareProjectImageAltText} />
+          {/* like, interactive */}
+          <img src={likeProjectImage} id='like' alt={likeProjectImageAltText} />
+          {/* favourite */}
+          <img src={favouriteProjectImage} id='favourite' alt={favouriteProjectImageAltText} />
+         </footer>
         </article>
       </main>
       <footer className="footer">
