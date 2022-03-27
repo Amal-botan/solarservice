@@ -1,6 +1,7 @@
 import {
   json,
   useLoaderData,
+  Link,
   Form,
   redirect,
   useActionData,
@@ -9,42 +10,42 @@ import {
 
 export default function Index() {
   const transition = useTransition();
- 
-    homeIcon= "../../public/images/icons/home-svgrepo-com.svg";
-    homeIconAltText= "home icon";
-    projectIcon= "../../public/images/icons/plan-svgrepo-com.svg";
-    projectIconAltText= "project icon";
-    chatIcon= "../../public/images/icons/comment-svgrepo-com.svg";
-    chatIconAltText= "chat icon";
-    siteLogo= "../../public/images/Social Icon Logo Only Zoom In.jpg";
-    altTextLogo= "SolRad logo";
-    loadingIcon= "../../public/images/icons/loading-svgrepo-com.svg";
-    loadingIconAltText= "loading icon";
-    heroTitle= "SolRad";
-    heroImage= "../../public/images/Social Icon Logo Only Zoom In.jpg";
-    heroImageAltText= "solar rad hero image";
-    heroText= "more than so rad; its solrad";
-    userName= "Meagan Sandler";
-    userHandle= "@Meagan224";
-    avatarAltText= "@Meagan224's avatar";
-    postTime= "21=39";
-    userAvatar= "../../public/images/icons/avatar-svgrepo-com.svg";
-    userStatus= "../../public/images/icons/status-waiting-svgrepo-com.svg";
-    userStatusAltText= "Meagan224 is Offline";
-    projectText= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s; when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...";
-    projectImage= "../../public/images/Solar tile 5B.157.png";
-    projectImageAltText= "solar tile";
-    expandImage= "../../public/images/icons/expand-svgrepo-com.svg";
-    expandImageAltText= "expand for details";
-    commentProjectImage= "../../public/images/icons/comment-svgrepo-com.svg";
-    commentProjectImageAltText= "comment on this project";
-    shareProjectImage= "../../public/images/icons/share-svgrepo-com.svg";
-    shareProjectImageAltText= "share this project";
-    likeProjectImage= "../../public/images/icons/like-svgrepo-com.svg";
-    likeProjectImageAltText= "like this project";
-    favouriteProjectImage= "../../public/images/icons/favourite-star-svgrepo-com.svg";
-    favouriteProjectImageAltText= "favourite this project";
-    footerText= "Created By Keith Greensberg, Amall Sighn, Jacob Alibaster 2022";
+    const homeIcon = "images/icons/home-svgrepo-com.svg";
+    const homeIconAltText= "home icon";
+    const projectIcon= "images/icons/plan-svgrepo-com.svg";
+    const projectIconAltText= "project icon";
+    const chatIcon= "images/icons/comment-svgrepo-com.svg";
+    const chatIconAltText= "chat icon";
+    const siteLogo= "images/Social Icon Logo Only Zoom In.jpg";
+    const altTextLogo= "SolRad logo";
+    const loadingIcon= "images/icons/loading-svgrepo-com.svg";
+    const loadingIconAltText= "loading icon";
+    const heroTitle= "SolRad";
+    const heroImage= "images/Social Icon Logo Only Zoom In.jpg";
+    const heroImageAltText= "solar rad hero image";
+    const heroText= "more than so rad; its solrad";
+    const userName= "Meagan Sandler";
+    const userHandle= "@Meagan224";
+    const avatarAltText = "@Meagan224's avatar";
+    const postTime = "21=39";
+    const userAvatar = "images/icons/avatar-svgrepo-com.svg";
+    const userStatus = "images/icons/status-waiting-svgrepo-com.svg";
+    const userStatusAltText = "Meagan224 is Offline";
+    const projectText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s; when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...";
+    const projectTitle = "My Project";
+    const projectImage= "images/Solar tile 5B.157.png";
+    const projectImageAltText= "solar tile";
+   const expandImage= "images/icons/expand-svgrepo-com.svg";
+   const expandImageAltText= "expand for details";
+   const commentProjectImage= "images/icons/comment-svgrepo-com.svg";
+   const commentProjectImageAltText= "comment on this project";
+   const shareProjectImage= "images/icons/share-svgrepo-com.svg";
+   const shareProjectImageAltText= "share this project";
+   const likeProjectImage= "images/icons/like-svgrepo-com.svg";
+   const likeProjectImageAltText= "like this project";
+   const favouriteProjectImage= "images/icons/favourite-star-svgrepo-com.svg";
+    const favouriteProjectImageAltText= "favourite this project";
+    const footerText= "Created By Keith Greensberg, Amall Sighn, Jacob Alibaster 2022";
 
   return (
     <>
@@ -54,11 +55,11 @@ export default function Index() {
            src={siteLogo}
            alt={altTextLogo}
           />
-          <span className="header-nav span-nav"> <p className="span-nav nav-title"><Link>Home</Link></p>
-          <img className="span-nav nav-img" src={homeIcon} alt={homeIconAltText} /></span> <span className="header-nav span-nav"><p className="span-nav nav-title"><Link>Projects</Link></p>
+          <span className="header-nav span-nav"> <p className="span-nav nav-title"><Link to="/">Home</Link></p>
+          <img className="span-nav nav-img" src={homeIcon} alt={homeIconAltText} /></span> <span className="header-nav span-nav"><p className="span-nav nav-title"><Link to="projects">Projects</Link></p>
           <img className="span-nav nav-img" src={projectIcon} alt={projectIconAltText} />
           </span>
-          <span className="header-nav span-nav"><p className="span-nav nav-title"><Link>Chat</Link></p>
+          <span className="header-nav span-nav"><p className="span-nav nav-title"><Link to="chat">Chat</Link></p>
           <img className="span-nav nav-img" src={chatIcon} alt={chatIconAltText} /></span>
           <Form method="post">
             <label className="header-nav nav-label">
@@ -111,7 +112,7 @@ export default function Index() {
             {/* expand for full project details */}
           <img className='project-footer project-image' id='expand' src={expandImage} alt={expandImageAltText} />
           {/* comment on the project (may open a modal then redirects to project page after posting) */}
-          <img className='project-footer project-image' src={commentProjectImage} id='comment' alt={commitProjectImageAltText} />
+          <img className='project-footer project-image' src={commentProjectImage} id='comment' alt={commentProjectImageAltText} />
           {/* share the project, opens a modal with a link to the project page or just is a clipboard*/}
           <img className='project-footer project-image' src={shareProjectImage} id='share' alt={shareProjectImageAltText} />
           {/* like, interactive */}
@@ -127,12 +128,12 @@ export default function Index() {
             src={siteLogo}
             alt={altTextLogo}
           />
-           <p className="footer-nav nav-title"><Link>Home</Link></p>
+           <p className="footer-nav nav-title"><Link to="/">Home</Link></p>
            <img className="footer-nav nav-img" src={homeIcon} alt={homeIconAltText} />
-          <p className="footer-nav nav-title"><Link>Projects</Link></p>
+          <p className="footer-nav nav-title"><Link to="projects">Projects</Link></p>
           <img className="footer-nav nav-img" src={projectIcon} alt={projectIconAltText} />
-          <p className="footer-nav nav-title"><Link>Chat</Link></p>
-          <img className="footer-nav nav-img"/><Link src={chatIcon} alt={chatIconAltText} />
+          <p className="footer-nav nav-title"><Link to="chat">Chat</Link></p>
+          <img className="footer-nav nav-img"src={chatIcon} alt={chatIconAltText}/>
         </nav>
         <p className="footer footer-text">{footerText}</p>
       </footer>
