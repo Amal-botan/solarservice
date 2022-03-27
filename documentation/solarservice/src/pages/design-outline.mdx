@@ -2,16 +2,25 @@ import React from 'react';
 import Layout from '@theme/Layout'
 
 export default function outline () {
+  const projectName = 'Solar Service'
+  const company = 'Solar Service Inc'
+  const generalDocumentation = 'https://www.industrialempathy.com/posts/design-docs-at-google/'
   return (
     <Layout>
       # Outline
-      Design docs are a fundamental tool for communicating software design decisions–but communicating things is hard and so is writing design docs. Time for an overly detailed exploration into what would happen if one wrote a design doc for design docs.
+      This is an outline of the project called {projectName}, for the company {company}. This application is a social network which allows users to purchase solar panels and share their Do-it-yourself solar projects with others.
 
-      May 19th, 2015
+      March 26th, 2022
       Status: Draft
-      Authors: Malte Ubl
+      Authors: Keith Noel, Amal Botan
 
-      <p><em>Note</em> While this post continues to be independently useful, I have published a more approachable write-up about Google's use of design docs in <a href="http://developers.google.com/design">Design Docs at Google</a>.</p>
+      <p><em>Note</em>: This post is subject to change and is only a rough outline of the project as a whole for for more detail about the project please see the documentation <a href={generalDocumentation}>here</a>.</p>
+
+      ## Context and Scope
+      
+      Software design is an important element of software engineering in which, after we established the requirements of the product or system we are building, we make plans and decisions how to best implement those requirements in software.
+
+      This document describes how a design document is used to facilitate the process of coming to an agreement on a software design and to document it for current and future implementers, maintainers and other stakeholders of the software.
     </Layout>
 
 )
