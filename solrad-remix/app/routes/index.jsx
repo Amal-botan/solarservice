@@ -23,11 +23,11 @@ export default function Index() {
   const heroTitle = "SolRad";
   const heroImage = "images/Social Icon Logo Only Zoom In.jpg";
   const heroImageAltText = "solar rad hero image";
-  const heroText = "more than so rad; its solrad";
+  const heroText = "more than so rad, its solrad";
   const userName = "Meagan Sandler";
   const userHandle = "@Meagan224";
   const avatarAltText = "@Meagan224's avatar";
-  const postTime = "21=39";
+  const postTime = "21:39";
   const userAvatar = "images/icons/avatar-svgrepo-com.svg";
   const userStatus = "images/icons/status-waiting-svgrepo-com.svg";
   const userStatusAltText = "Meagan224 is Offline";
@@ -54,7 +54,9 @@ export default function Index() {
   const logoutIconAltText = "logout";
   const loginIcon = "images/icons/login-svgrepo-com.svg";
   const loginIconAltText = "login";
-
+  const searchIcon = "images/icons/search-svgrepo-com.svg";
+  const searchIconAltText = "search";
+  let userLoggedIn = false;
   return (
     <>
       <header className="header">
@@ -111,18 +113,18 @@ export default function Index() {
             ) : null}
           </Form>
           {userLoggedIn ? (
-            <div>
-              <p className="">
+            <div className="header-nav div-nav">
+              <p className="header-nav div-nav" >
                 <Link to="logout">logout</Link>
               </p>
-              <img src={logoutIcon} alt={logoutIconAltText} />
+              <img className="div-nav div-img" src={logoutIcon} alt={logoutIconAltText} />
             </div>
           ) : (
-            <div>
-              <p className="">
+            <div className="header-nav div-nav">
+              <p className="div-nav nav-text">
                 <Link to="logout">logout</Link>
               </p>
-              <img src={loginIcon} alt={loginIconAltText} />
+              <img className="div-nav nav-img" src={loginIcon} alt={loginIconAltText} />
             </div>
           )}
         </nav>
@@ -194,7 +196,7 @@ export default function Index() {
               id="favourite"
               alt={favouriteProjectImageAltText}
             />
-            {/* purchase */}
+            {/* purchase have logo animation */}
             <img
               className="project-footer project-image"
               src={purchaseProjectImage}
