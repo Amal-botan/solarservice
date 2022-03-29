@@ -50,94 +50,104 @@ export default function Index() {
     "Created By Keith Greensberg, Amall Sighn, Jacob Alibaster 2022";
   const purchaseProjectImage = "images/icons/buy-svgrepo-com.svg";
   const purchaseProjectImageAltText = "buy this project";
-  const logoutIcon = "images/icons/logout-svgrepo-com.";
-  const logoutIconAltText = "logout";
+  const logoutIcon = "images/icons/logout-svgrepo-com.svg";
+  const logoutIconAltText = "Logout";
   const loginIcon = "images/icons/login-svgrepo-com.svg";
-  const loginIconAltText = "login";
+  const loginIconAltText = "Login";
   const searchIcon = "images/icons/search-svgrepo-com.svg";
   const searchIconAltText = "search";
-  let userLoggedIn = false;
+  let userLoggedIn = true;
+  const divClass = `bg-[url(${heroImage})]`
   return (
     <>
       <header className="header">
-        <nav className="header header-nav">
-          <img src={siteLogo} alt={altTextLogo} />
-          <span className="header-nav span-nav">
-            {" "}
-            <p className="span-nav nav-title">
-              <Link to="/">Home</Link>
-            </p>
+        <nav className="header header-nav flex flex-row justify-between bg-gray-600 text-white">
+          <img className="w-12 h-12 rounded-full mx-4" src={siteLogo} alt={altTextLogo} />
+          <div className="flex">
+          <span className="header-nav span-nav mx-4">
             <img
-              className="span-nav nav-img"
+              className="span-nav nav-img w-8 h-8 ml-2"
               src={homeIcon}
               alt={homeIconAltText}
             />
-          </span>{" "}
-          <span className="header-nav span-nav">
             <p className="span-nav nav-title">
-              <Link to="projects">Projects</Link>
+              <Link to="/">Home</Link>
             </p>
+          </span>
+          <span className="header-nav span-nav mx-4">
             <img
-              className="span-nav nav-img"
+              className="span-nav nav-img w-8 h-8 ml-3"
               src={projectIcon}
               alt={projectIconAltText}
             />
-          </span>
-          <span className="header-nav span-nav">
             <p className="span-nav nav-title">
-              <Link to="chat">Chat</Link>
+              <Link to="projects">Projects</Link>
             </p>
+          </span>
+          <span className="header-nav span-nav mx-4">
             <img
-              className="span-nav nav-img"
+              className="span-nav nav-img w-8 h-8"
               src={chatIcon}
               alt={chatIconAltText}
             />
+            <p className="span-nav nav-title">
+              <Link to="chat">Chat</Link>
+            </p>
           </span>
+
           <Form method="post">
-            <label className="header-nav nav-label">
-              Search: <img src={searchIcon} alt={searchIconAltText} />
+               <label className="header-nav nav-label flex flex-row border-white mt-4 w-4 h-4 mx-3">
+              <img className="w-4 h-4" src={searchIcon} alt={searchIconAltText} />
               <input
-                className="header-nav nav-input"
+                className="header-nav nav-input text-white bg-inherit border-1"
                 type="text"
                 name="search"
               />
             </label>
+           
             {transition.submission ? (
               <span className="header-nav span-loader">
                 <img
                   className="span-nav nav-img"
                   src={loadingIcon}
                   alt={loadingIconAltText}
-                />
+                  />
               </span>
             ) : null}
           </Form>
+          </div>
+            
+           
           {userLoggedIn ? (
             <div className="header-nav div-nav">
+              <img className="div-nav div-img w-8 h-8 ml-3" src={logoutIcon} alt={logoutIconAltText} />
               <p className="header-nav div-nav" >
-                <Link to="logout">logout</Link>
+                <Link to="logout">Logout</Link>
               </p>
-              <img className="div-nav div-img" src={logoutIcon} alt={logoutIconAltText} />
             </div>
           ) : (
             <div className="header-nav div-nav">
+              <img className="div-nav nav-img w-8 h-8 ml-3" src={loginIcon} alt={loginIconAltText} />
               <p className="div-nav nav-text">
-                <Link to="logout">logout</Link>
+                <Link to="logout">Logout</Link>
               </p>
-              <img className="div-nav nav-img" src={loginIcon} alt={loginIconAltText} />
             </div>
           )}
         </nav>
-        <container className="hero-container">
-          <h1 className="hero-container hero-container-title">{heroTitle}</h1>
+        <container className="hero-container flex flex-col">
+          <div className="bg-[url('images/Social Icon Logo Only Zoom In.jpg')] ring-red-600 border-2">
+          <h1 className="hero-container hero-container-title text-center text-6xl font-bold font-mono z-0 ">{heroTitle}</h1>
+          <div className="hero-container flex justify-center">
           <img
-            className="hero-container hero-container-image"
+            className="hero-container hero-container-image h-auto rounded-full"
             src={heroImage}
             alt={heroImageAltText}
           />
+          </div>
           <aside className="hero-container hero-container-aside">
             <p className="hero-container-aside hero-aside-text">{heroText}</p>
           </aside>
+          </div>
         </container>
       </header>
       <main className="main">
