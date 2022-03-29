@@ -1,0 +1,19 @@
+.maincontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.cardheader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.editdeletebtns{
+  margin: 10px;
+}
+
+.projectpost {
+  margin: 30px;
+}
