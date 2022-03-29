@@ -1,16 +1,17 @@
 import React, {useContext} from "react";
 import { Navigate } from "react-router-dom";
 import { useUserAuth } from "../context/UserAuthContext";
-import Home from "./Home"
+import Timeline from "./Timeline"
 
 
-const ProtectedRoute = () => {
+const ProtectedRouteTimeline = (props) => {
   // const user = useContext(useUserAuth);
-   const {user} = useUserAuth();
+
+   let {user} = useUserAuth();
   if(!user) {
    return <Navigate to="/login" />
   }
-  return <Home />;
+  return <Timeline/>
 }
 
-export default ProtectedRoute;
+export default ProtectedRouteTimeline;
