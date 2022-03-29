@@ -5,6 +5,10 @@ import Box from '@mui/material/Box';
 import { useNavigate } from "react-router-dom";
 import '../pages/Timeline.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import CommentIcon from '@mui/icons-material/Comment';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 // import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -81,23 +85,34 @@ const Timeline = () => {
 
       <div>
         <div>
-          Add project
+          <IconButton aria-label="settings">
+           <AddCircleIcon /> New Project 
+          </IconButton>
         </div>
 
 
         <div>
           <Card sx={{ minWidth: 600, maxWidth: 600 }}>
-            <CardHeader
-              avatar={
-                <Avatar alt="Travis Howard" src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-              }
-              action={
+            <div className="cardheader">
+              <CardHeader
+                avatar={
+                  <Avatar alt="Travis Howard" src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                }
+
+                title="Project title"
+                subheader="created-at timestamp"
+              />
+              <div className="editdeletebtns">
                 <IconButton aria-label="settings">
-                  <MoreVertIcon />
+                  <EditIcon />
                 </IconButton>
-              }
-              subheader="created-at timestamp"
-            />
+                <IconButton aria-label="settings">
+                  <DeleteIcon />
+                </IconButton>
+              </div>
+
+            </div>
+
             <CardMedia
               component="img"
               height="194"
@@ -122,28 +137,9 @@ const Timeline = () => {
                 aria-expanded={expanded}
                 aria-label="show more"
               >
-                <button>
-                  <svg
-                    className="feather feather-send sc-dnqmqq jxshSx"
-                    xmlns="http://www.w3.org/2000/svg"
-                    color="secondary"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-
-            
-                  >
-                    {" "}
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                    {" "}
-                  </svg>
-                </button>
+                <IconButton aria-label="settings">
+                  <CommentIcon />
+                </IconButton>
               </ExpandMore>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -152,7 +148,6 @@ const Timeline = () => {
               </CardContent>
             </Collapse>
           </Card>
-
 
         </div>
       </div>
