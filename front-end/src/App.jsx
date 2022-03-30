@@ -7,6 +7,8 @@ import { Fragment } from 'react';
 import { UserAuthContextProvider } from "./context/UserAuthContext";
 import Home from "./pages/Home";
 import Timeline from "./pages/Timeline";
+import NewProject from "./pages/NewProject";
+
 import ProtectedRouteHome from "./pages/ProtectedRouteHome";
 import ProtectedRouteTimeline from "./pages/ProtectedRouteTimeline";
 
@@ -23,6 +25,7 @@ function App() {
           <Route path="/timeline" element={<ProtectedRouteTimeline>{<Timeline />}</ProtectedRouteTimeline>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/newproject" element={<NewProject />} />
         </Routes>
       </UserAuthContextProvider>
     </div >

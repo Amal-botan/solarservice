@@ -12,7 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CommentIcon from '@mui/icons-material/Comment';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { db } from '../firebase'; 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import Link from '@mui/material/Link';
 
 
 
@@ -20,6 +21,8 @@ import { collection, getDocs } from "firebase/firestore";
 const Timeline = () => {
   const [projects, setProjects] = useState([]); 
   const projectCollectionRef = collection(db, "projects");
+  const [newProject, setNewProject] = useState(false);
+
 
   const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
@@ -38,20 +41,20 @@ const Timeline = () => {
 
   const handleAddProject = () => {
     console.log("Add project")
+    setNewProject(true);
   }
 
   useEffect(() => {
     const getProjects = async () => {
-      const data = await getDocs(projectCollectionRef)
+      const data = await getDocs(query(projectCollectionRef, orderBy("created_at", "desc")))
       setProjects(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
-
     getProjects(); 
   }, [])
 
   console.log("projects", projects)
   return (
-    <div className="maincontainer">
+    <div className="maincontainertimeline">
       <div>
         {user && <div> Current user is: {user.email} </div>}
 
@@ -71,9 +74,12 @@ const Timeline = () => {
 
       <div>
         <div>
-          <Button startIcon={<AddCircleIcon />} onClick={handleAddProject} >
-           New Project 
-          </Button>
+          <Button startIcon={<AddCircleIcon />} >
+          <Link href="/newproject" variant="body2" >
+                    {"New Project"}
+          </Link>
+          </Button> 
+          
         </div>
 
       <div>

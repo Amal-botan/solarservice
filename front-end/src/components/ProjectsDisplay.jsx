@@ -62,8 +62,9 @@ const ProjectsDisplay = (props) => {
                 }
 
                 title={project.title}
-                subheader="create_at"
+                subheader={project.create_at ? project.created_at : <div></div>} //need to fix created at
               />
+              {console.log(project.created_at)}
               <div className="editdeletebtns">
                 <IconButton aria-label="edit">
                   <EditIcon />
