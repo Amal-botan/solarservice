@@ -1,0 +1,9 @@
+.maincontainernewproject{
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.project_text_box{
+  margin: 10px;
+}

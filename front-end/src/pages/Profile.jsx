@@ -12,13 +12,13 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CommentIcon from '@mui/icons-material/Comment';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { db } from '../firebase'; 
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, where } from "firebase/firestore";
 import Link from '@mui/material/Link';
 
 
 
 
-const Timeline = () => {
+const Profile = () => {
   const [projects, setProjects] = useState([]); 
   const projectCollectionRef = collection(db, "projects");
   const [newProject, setNewProject] = useState(false);
@@ -26,8 +26,7 @@ const Timeline = () => {
 
   const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
-
-  console.log("user", user)
+  const userId = user.uid
 
   const handleSubmit = async () => {
     try {
@@ -46,7 +45,8 @@ const Timeline = () => {
 
   useEffect(() => {
     const getProjects = async () => {
-      const data = await getDocs(query(projectCollectionRef, orderBy("created_at", "desc")))
+      const data = await getDocs(query(projectCollectionRef, where("user_id", "==", userId), orderBy("created_at", "desc")))
+      console.log(data); 
       setProjects(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     }
     getProjects(); 
@@ -56,9 +56,9 @@ const Timeline = () => {
     console.log("Project update", id) 
   }
 
-  console.log("projects", projects)
+
   return (
-    <div className="maincontainertimeline">
+    <div className="profilemaincontainer">
       <div>
         {user && <div> Current user is: {user.email} your id is {user.uid} </div>}
 
@@ -92,15 +92,10 @@ const Timeline = () => {
 
       </div>
 
-      <div>
-        Contacts Online
-      </div>
-
-
 
 
     </div>
   )
 }
 
-export default Timeline;
+export default Profile;
