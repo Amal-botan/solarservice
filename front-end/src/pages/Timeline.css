@@ -17,3 +17,8 @@
 .projectpost {
   margin: 30px;
 }
+
+.profilemaincontainer {
+  display: flex;
+  flex-direction: column;
+}

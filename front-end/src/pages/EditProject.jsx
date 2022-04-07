@@ -14,11 +14,11 @@ import { collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "fi
 import firebase from "firebase/app";
 import {useLocation} from 'react-router-dom';
 
-const NewProject = () => {
+const EditProject = () => {
+  const location = useLocation();
   const [projects, setProjects] = useState([])
-
-  const { user, logOut } = useUserAuth();
-
+  // const [project, setProject] = useState([])
+  
   useEffect(() => {
     const getProjects = async () => {
       const data = await getDocs(query(projectCollectionRef, orderBy("created_at", "desc")))
@@ -28,10 +28,16 @@ const NewProject = () => {
   }, [])
 
 
+const project = projects.map((proj) => {
+      if(proj.id === location.state.id){
+        console.log({proj})
+        return proj
+      }
+  })
 
+  console.log({project});
 
-
-  const [projectTitle, setProjectTitle] = useState("")
+  const [projectTitle, setProjectTitle] = useState(location.state ? project.title : "")
   const [projectSummary, setProjectSummary] = useState("");
   const [projectDuration, setProjectDuration] = useState("");
   const [projectCost, setProjectCost] = useState("");
@@ -40,11 +46,11 @@ const NewProject = () => {
   const projectCollectionRef = collection(db, "projects");
   // const firebase = require('firebase-admin')
 
-
+ 
 
 
   const handleSubmit = async () => {
-    const project = {title: projectTitle, summary: projectSummary, duration: projectDuration, total_cost: projectCost, image: projectImage, created_at: serverTimestamp(), user_id: user.uid}
+    const project = {title: projectTitle, summary: projectSummary, duration: projectDuration, total_cost: projectCost, image: projectImage, created_at: serverTimestamp()}
     await addDoc(projectCollectionRef, project)
   }
 
@@ -53,7 +59,7 @@ const NewProject = () => {
 
   return  (
     <div>
-      <h1> Create New Project</h1> 
+     {location.state ? <h1> Edit Project</h1> :  <h1> Create New Project</h1> }
 
       <Button startIcon={<CancelIcon />} >
         <Link href="/timeline" variant="body2" >
@@ -119,4 +125,4 @@ const NewProject = () => {
   )
 }
 
-export default NewProject;
+export default EditProject;
