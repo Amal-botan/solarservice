@@ -42,15 +42,16 @@ const NewProject = () => {
 
   const projectCollectionRef = collection(db, "projects");
   // const firebase = require('firebase-admin')
-
+  const navigate = useNavigate();
 
 
 
   const handleSubmit = async () => {
     const project = { title: projectTitle, summary: projectSummary, duration: projectDuration, total_cost: projectCost, image: projectImage, created_at: serverTimestamp(), user_id: user.uid,  width: width }
     await addDoc(projectCollectionRef, project)
-  }
+    navigate("/timeline")
 
+  }
 
 
 
@@ -105,13 +106,7 @@ const NewProject = () => {
           onChange={(event) => setProjectImage(event.target.value)}
         ></textarea>
 
-        <textarea
-          className="project_text_box"
-          name="text"
-          placeholder="Project Image"
-          value={width}
-          onChange={(event) => setWidth(event.target.value)}
-        ></textarea>
+      
 
         <Button
           variant="contained"
