@@ -1,0 +1,43 @@
+.maincontainer{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(53,118, 203);
+  justify-content: space-around;
+  width: 100%;
+  /* position: fixed; */
+  height: 75px;
+  align-items:  center;
+  margin: 0px
+}
+
+
+
+.containerlinks{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.btn {
+  color: white;
+  font-size: 20px;
+}
+.btn:hover{
+color:  white;
+/* background-color: rgb(226,113,85); */
+border-radius: 20px;
+}
+
+.img{
+  width: 10px
+}
+
+.containersign {
+  display: flex;
+  gap: 20px;
+}
+
+.logout{
+  display:flex;
+  align-items: center;
+  font-size: x-large
+}

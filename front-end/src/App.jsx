@@ -10,6 +10,7 @@ import Timeline from "./pages/Timeline";
 import NewProject from "./pages/NewProject";
 import EditProject from "./pages/EditProject";
 import Profile from "./pages/Profile";
+import Navbar from "./components/Navbar";
 
 
 import ProtectedRouteHome from "./pages/ProtectedRouteHome";
@@ -23,6 +24,7 @@ function App() {
 
       {/* <Navbars /> */}
       <UserAuthContextProvider>
+        <Navbar />
         <Routes>
           <Route path="/home" element={<ProtectedRouteHome>{<Home />}</ProtectedRouteHome>} />
           <Route path="/timeline" element={<ProtectedRouteTimeline>{<Timeline />}</ProtectedRouteTimeline>} />
@@ -32,6 +34,7 @@ function App() {
           <Route path="/editproject" element={<EditProject />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
+     
       </UserAuthContextProvider>
     </div >
 
