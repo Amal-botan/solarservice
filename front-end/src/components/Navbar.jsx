@@ -16,8 +16,10 @@ const Navbar = () => {
   console.log("user", user)
   const handleSubmit = async () => {
     try {
+
+      navigate("/login")      
       await logOut()
-      navigate("/login")
+     
 
     } catch (err) {
       console.log(err.message)
@@ -29,10 +31,9 @@ const Navbar = () => {
 
       <Link className="btn" to="/home">Home</Link>
       <Link className="btn" to="/timeline">Timeline</Link>
-      <Link className="btn" to="/profile">Profile</Link>
+      {user && <Link className="btn" to="/profile">Profile</Link>}
 
-      
-      <Button
+      {user && <Button
         type="submit"
         // fullWidth
         variant="contained"
@@ -42,8 +43,19 @@ const Navbar = () => {
         Logout
 
       </Button>
+      }
 
 
+      {!user &&
+
+        <Link className="btn" to="/login">Login</Link>
+      }
+
+
+      {!user &&
+
+        <Link className="btn" to="/register">Signup</Link>
+      }
 
     </div>
   );

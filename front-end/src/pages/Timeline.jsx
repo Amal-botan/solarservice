@@ -86,8 +86,6 @@ const Timeline = () => {
       </div>
 
 
-
-
     </div>
   )
 }

@@ -16,6 +16,9 @@ import { useUserAuth } from "../context/UserAuthContext";
 import {useState} from "react";
 import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
+import { db } from '../firebase'; 
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
+
 
 function Copyright(props) {
   return (
@@ -34,6 +37,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   const  { signUp } = useUserAuth();
+  
   const [error, setError] = useState("")
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
@@ -50,6 +54,7 @@ export default function SignUp() {
     try {
       await signUp(email, password);
       navigate("/home")
+       
       // setLoading(true); to make a loading and remove button, do that later
     } catch(err) {
       setError(err.message);
