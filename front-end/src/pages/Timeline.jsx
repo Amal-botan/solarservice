@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import { useNavigate } from "react-router-dom";
 import '../pages/Timeline.css';
 import ProjectsDisplay from '../components/ProjectsDisplay.jsx';
+import UserTimeline from '../components/User.jsx';
 import { useEffect, useState } from 'react'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import EditIcon from '@mui/icons-material/Edit';
@@ -60,19 +61,7 @@ const Timeline = () => {
   return (
     <div className="maincontainertimeline">
       <div>
-        {user && <div> Current user is: {user.email} your id is {user.uid} </div>}
-
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Logout
-
-          </Button>
-        </Box>
+        <UserTimeline/>
 
       </div>
 
