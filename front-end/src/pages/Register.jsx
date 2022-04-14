@@ -17,7 +17,7 @@ import {useState} from "react";
 import Alert from '@mui/material/Alert';
 import { useNavigate } from "react-router-dom";
 import { db } from '../firebase'; 
-import { collection, getDocs, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 
 function Copyright(props) {
@@ -41,6 +41,10 @@ export default function SignUp() {
   const [error, setError] = useState("")
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false)
+
+  const userCollectionRef = collection(db, "users");
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError("");
@@ -52,9 +56,13 @@ export default function SignUp() {
     const email = data.get('email')
     const password = data.get('password')
     try {
-      await signUp(email, password);
+      
+      const {user} =  await signUp(email, password);
+      console.log(user.uid)
       navigate("/home")
-       
+       const newUser = {email: email, password: password, user_id: user.uid}
+       await setDoc(doc(db, "users", user.uid), newUser);
+
       // setLoading(true); to make a loading and remove button, do that later
     } catch(err) {
       setError(err.message);

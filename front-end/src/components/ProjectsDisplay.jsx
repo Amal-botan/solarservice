@@ -44,11 +44,11 @@ const ExpandMore = styled((props) => {
 
 
 const ProjectsDisplay = (props) => {
-  const { projects, updateProject, projectCollectionRef, setProjects, user } = props;
+  const { projects, updateProject, projectCollectionRef, setProjects, user, users } = props;
   const [expanded, setExpanded] = React.useState(false);
   const [editDisplay, setEditDisplay] = useState(false);
   const navigate = useNavigate();
-
+  
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -74,7 +74,6 @@ const ProjectsDisplay = (props) => {
     }
     getProjects(); 
   }
-
 
 
   return projects.map((project) => (
