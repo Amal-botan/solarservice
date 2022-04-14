@@ -21,7 +21,10 @@ import Link from '@mui/material/Link';
 
 const Timeline = () => {
   const [projects, setProjects] = useState([]); 
+  const [users, setUsers] = useState([]); 
   const projectCollectionRef = collection(db, "projects");
+  const userCollectionRef = collection(db, "users");
+
   const [newProject, setNewProject] = useState(false);
 
 
@@ -53,11 +56,21 @@ const Timeline = () => {
     getProjects(); 
   }, [])
 
+  useEffect(() => {
+    const getUsers = async () => {
+      const data = await getDocs(userCollectionRef)
+      setUsers(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }
+    getUsers(); 
+  }, [])
+
   const updateProject = async (id) => {
     console.log("Project update", id) 
   }
 
   console.log("projects", projects)
+  console.log("users", users)
+  
   return (
     <div className="maincontainertimeline">
       <div>
@@ -84,8 +97,6 @@ const Timeline = () => {
       <div>
         Contacts Online
       </div>
-
-
 
 
     </div>

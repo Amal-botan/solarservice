@@ -10,7 +10,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { useState, useEffect } from "react";
 import '../pages/NewProject.css';
 import { db } from '../firebase'; 
-import { collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, updateDoc, query, orderBy, serverTimestamp } from "firebase/firestore";
 import firebase from "firebase/app";
 import {useLocation} from 'react-router-dom';
 
@@ -19,15 +19,16 @@ const EditProject = () => {
   const [projects, setProjects] = useState([])
   // const [project, setProject] = useState([])
   
-  useEffect(() => {
-    const getProjects = async () => {
-      const data = await getDocs(query(projectCollectionRef, orderBy("created_at", "desc")))
-      setProjects(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    }
-    getProjects(); 
-  }, [])
+  // useEffect(() => {
+  //   const getProjects = async () => {
+  //     const data = await getDocs(query(projectCollectionRef, orderBy("created_at", "desc")))
+  //     setProjects(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+  //   }
+  //   getProjects(); 
+  // }, [])
 
-
+//trying to get project info so it can show for the user to edit
+// couldn't figure this part out
 const project = projects.map((proj) => {
       if(proj.id === location.state.id){
         console.log({proj})
@@ -35,7 +36,7 @@ const project = projects.map((proj) => {
       }
   })
 
-  console.log({project});
+
 
   const [projectTitle, setProjectTitle] = useState(location.state ? project.title : "")
   const [projectSummary, setProjectSummary] = useState("");
@@ -53,8 +54,6 @@ const project = projects.map((proj) => {
     const project = {title: projectTitle, summary: projectSummary, duration: projectDuration, total_cost: projectCost, image: projectImage, created_at: serverTimestamp()}
     await addDoc(projectCollectionRef, project)
   }
-
-
 
 
   return  (
