@@ -13,7 +13,6 @@ const Navbar = () => {
   const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
 
-  console.log("user", user)
   const handleSubmit = async () => {
     try {
 
