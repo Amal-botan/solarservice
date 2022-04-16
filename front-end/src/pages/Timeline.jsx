@@ -31,7 +31,6 @@ const Timeline = () => {
   const { user, logOut } = useUserAuth();
   const navigate = useNavigate();
 
-  console.log("user", user)
 
   const handleSubmit = async () => {
     try {
@@ -44,7 +43,6 @@ const Timeline = () => {
   }
 
   const handleAddProject = () => {
-    console.log("Add project")
     setNewProject(true);
   }
 
@@ -68,9 +66,7 @@ const Timeline = () => {
     console.log("Project update", id) 
   }
 
-  console.log("projects", projects)
-  console.log("users", users)
-  
+
   return (
     <div className="maincontainertimeline">
       <div>
@@ -89,7 +85,7 @@ const Timeline = () => {
         </div>
 
       <div>
-        <ProjectsDisplay user={user} setProjects={setProjects} projectCollectionRef={projectCollectionRef} projects={projects} updateProject={updateProject} />
+        <ProjectsDisplay users={users} user={user} setProjects={setProjects} projectCollectionRef={projectCollectionRef} projects={projects} updateProject={updateProject} />
       </div>
 
       </div>

@@ -48,7 +48,10 @@ const ProjectsDisplay = (props) => {
   const [expanded, setExpanded] = React.useState(false);
   const [editDisplay, setEditDisplay] = useState(false);
   const navigate = useNavigate();
-  
+  const [userEmail, setUserEmail] = useState("");
+  const [userImage, setUserImage] = useState("");
+  // const [userEmail, setUserEmail] = useState("");
+
   
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -75,16 +78,25 @@ const ProjectsDisplay = (props) => {
     getProjects(); 
   }
 
+// const usersProject = [];
+
+//  projects.forEach((project)=> {
+//     for(let i = 0; i < users.length; i++){
+//       push
+//     }
+//   })
+  
 
   return projects.map((project) => (
 
+   
     <div className="projectpost">
 
       <Card sx={{ minWidth: 600, maxWidth: 600 }}>
         <div className="cardheader">
           <CardHeader
             avatar={
-              <Avatar alt="Travis Howard" src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+              <Avatar alt={project.user_email ? project.user_email : "N/A"} src={project.user_image ? project.user_image : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAMFBMVEX////f39/d3d38/Pzh4eHs7Ozy8vL4+Pj19fXq6urk5OTv7+/m5ubr6+v29/bn6Of+ydA3AAAEWElEQVR4nO2d2XLDIAxFbcDGW5r//9vGbdM2xU4EKha+6Dx0pm/kjJBYDDSNoiiKoiiKoiiKoiiKoiiKoiiKoiiKohyOtbbv/e2vlW5JGdh5HifTrhjjxrnz0i2Sxi/OfAr54vafc3Nfrxi7tA9CfomZbn1JunkSeLcl5FvMch2kW3g4/WaMPITLMtcVLM+j5Jteup1HspCU3LpQPfl2eNVzfqzM0m09igvZSWuulWQVspFViqtAivfXGCdt6+CTymDoHecuBTxShlghFUiZUpxgS6FX4QegS3Jkev0Bd0jr08JkjRTY3pPupB2l254L4jxnE9RRSlrV+QQ1zXKcOOnG5yGxEn9iMFfeZpYTzHLM6TqonYcTJqgDfJYSTCdenQR0vL7TIhYeVtkBnRxznXTSPyADI0sJpBNL2/yrywkzxaoTdaJOEp0g1mLeFBBzzHbhKYEc2zPHbJBOmPMdSCc9S0nbSrc/C6yBLGIpbphrSqDrsaxJIKgT1l4G6kYgZ9Q2STc+D6zVAgfZd+zE6juQ8x3uGjXiNyjMsb06USc01EkQJoifb3FzLGCYcONkkW5/Dnh76KDfKWmYhLDC5E269XmION8VMCFm2Ia3VnCVbnwmOPNiVCeMagy6GnvDJocJ4lzni6SjbyuwYdKk74/ihkmTuPGFOji5Y8foRIt/bUHsdyj4Z66b2K0v0L2uP8Sto6gTdaJO7kSW4xpSbOQ6ShVlJ7LwgO6d/+XlTWQPcSLd2mOIWqyuIsU2UZ0HdLk+hHhn3Qd1pNgmIlCqCZOIu2Fgl2FDqHEC+W3SDguxGuMuTYeQnWichNQyOmnolwhBnsXYgZpja3LSqZMA8m66dEMPhLwfKN3QAyHPjKUbeiDqJITqpKYcS90LVCcb1LNUQHZS0xyQHCeI39jvQN72qmMXsFkPwVGVrKsFVaTZuE9CjevxrfjYE7XGXaCt2Jm8nPTbihlRrdjZbT/iRbACuZfuB+d4h5qmAertM+vH+LdDwmAx04BiZeiYEfLby4hQnIfkJLJj5exHvvzMvOVx04q7nDfh2vkfssi2lus5rdguQ4z8WFnOt47g+/9LrDtWxnNZseP/JtYdK9N5rLztPDqbxcopSnOfMqVJZ+qKtzLwbghKwExFrybYjnshapoVN5Vamm32UvOEIntQ3uHIa8orzf0sGCNfUsy1pBXtW6eRNvKBKeVmu7T1xEyYpYQXj+U7zV+k063l3hyVAel3oDn3vGREUgr7HrpMCEYK962UbAjuM8ffPXAUcgc6RGY3NKQ6D+Pt3dyYizoJkDpvyruIPC9STjhvNOdGqhqXWolXhKpxsaOTFXUSIuTkTfp3P0PISdRdDEejTkLUSYg62UDms/SyncgMZAtdY7sjMpAteWgvNbiX/tXPUScbSGyrFz20b2XOzZXuRGKAok7O50TkPpmynYjcsZN8MfsxiJzDLXD3/AGJowqlO5EYtHXGlQzjeZp3TSc+LoSs340AAAAASUVORK5CYII="} />
             }
 
             title={project.title}
