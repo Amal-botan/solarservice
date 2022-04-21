@@ -7,17 +7,22 @@ import { useNavigate } from "react-router-dom";
 import Link from '@mui/material/Link';
 import SendIcon from '@mui/material/Link';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import '../pages/NewProject.css';
 import { db } from '../firebase';
 import { collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "firebase/firestore";
 import firebase from "firebase/app";
 import { useLocation } from 'react-router-dom';
+import { FormDisplayContext } from '../context/FormDisplayContext'
+import ProjectPreview from '../components/ProjectPreview'
 
 const NewProject = () => {
   const [projects, setProjects] = useState([])
 
   const { user } = useUserAuth();
+
+  const { roofLength, width, lengthSetter, widthSetter } = useContext(FormDisplayContext);
+
 
 
 
@@ -38,7 +43,7 @@ const NewProject = () => {
   const [projectDuration, setProjectDuration] = useState("");
   const [projectCost, setProjectCost] = useState("");
   const [projectImage, setProjectImage] = useState("");
-  const [width, setWidth] = useState(0);
+
 
   const projectCollectionRef = collection(db, "projects");
   // const firebase = require('firebase-admin')
@@ -47,7 +52,7 @@ const NewProject = () => {
 
 
   const handleSubmit = async () => {
-    const project = { title: projectTitle, summary: projectSummary, duration: projectDuration, total_cost: projectCost, image: projectImage, created_at: serverTimestamp(), user_id: user.uid,  width: width }
+    const project = { title: projectTitle, summary: projectSummary, duration: projectDuration, total_cost: projectCost, image: projectImage, created_at: serverTimestamp(), user_id: user.uid, width: width, length: roofLength}
     await addDoc(projectCollectionRef, project)
     navigate("/timeline")
 
@@ -106,7 +111,27 @@ const NewProject = () => {
           onChange={(event) => setProjectImage(event.target.value)}
         ></textarea>
 
-      
+        {/* <textarea
+          onChange={(e) => widthSetter(e.target.value)}
+          hiddenLabel
+          id="filled-hidden-label-normal"
+          label="Roof Width (cm)"
+          variant="filled"
+        />
+
+
+        <textarea
+          onChange={(e) => lengthSetter(e.target.value)}
+          hiddenLabel
+          id="filled-hidden-label-normal"
+          label="Roof Length (cm)"
+          variant="filled"
+        /> */}
+
+
+
+        <ProjectPreview/>
+
 
         <Button
           variant="contained"

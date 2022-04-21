@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import { Router, Routes, Route } from "react-router-dom";
 import { Fragment } from 'react';
 import { UserAuthContextProvider } from "./context/UserAuthContext";
+import { FormDisplayContextProvider } from './context/FormDisplayContext';
 import Home from "./pages/Home";
 import Timeline from "./pages/Timeline";
 import NewProject from "./pages/NewProject";
@@ -24,6 +25,9 @@ function App() {
 
       {/* <Navbars /> */}
       <UserAuthContextProvider>
+      <FormDisplayContextProvider>
+
+
         <Navbar />
         <Routes>
           <Route path="/home" element={<ProtectedRouteHome>{<Home />}</ProtectedRouteHome>} />
@@ -32,10 +36,14 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/newproject" element={<NewProject />} />
           <Route path="/editproject" element={<EditProject />} />
+      
           <Route path="/profile" element={<Profile />} />
         </Routes>
      
+      </FormDisplayContextProvider>
       </UserAuthContextProvider>
+
+
     </div >
 
   );
